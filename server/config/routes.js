@@ -32,10 +32,111 @@ module.exports.routes = {
   // located at `views/home/index.ejs`
   // 
   // (This would also work if you had a file at: `/views/home.ejs`)
-  '/': {
-    view: 'home/index'
-  }
 
+  '/' : {
+        controller: 'main',
+        action: 'index'
+    },
+    '/api/login' : {
+        controller: 'main',
+        action: 'login'
+    },
+    '/api/logout' : {
+        controller: 'main',
+        action: 'logout'
+    },
+    'get /api/dashboard' : {
+        controller: 'main',
+        action: 'dashboard'
+    },
+    'get /api/account' : {
+        controller: 'user',
+        action: 'account'
+    },
+    'get /api/user/:username' : {
+        controller: 'user',
+        action: 'view'
+    },
+    'get /api/users/manage' : {
+        controller: 'user',
+        action: 'manage'
+    },
+    'get /api/users' : {
+        controller: 'user',
+        action: 'index'
+    },
+    'put /api/user/:id' : {
+        controller: 'user',
+        action: 'update'
+    },
+    'post /api/user' : {
+        controller: 'user',
+        action: 'create'
+    },
+    'get /api/rooms/manage' : {
+        controller: 'room',
+        action: 'manage'
+    },
+    'post /api/room/:slug/hook/bitbucket/push' : {
+        controller: 'room',
+        action: 'room_hook_bitbucket'
+    },
+    'post /api/room/:slug/hook/github/push' : {
+        controller: 'room',
+        action: 'room_hook_github'
+    },
+    'post /api/room/:slug/message' : {
+        controller: 'message',
+        action: 'create'
+    },
+    'get /api/room/:slug/groups' : {
+        controller: 'room',
+        action: 'room_groups'
+    },
+    'get /api/room/:slug/subscribers' : {
+        controller: 'room',
+        action: 'room_subscribers'
+    },
+    'get /api/room/:slug/messages' : {
+        controller: 'room',
+        action: 'room_messages'
+    },
+    'get /api/room/:slug' : {
+        controller: 'room',
+        action: 'room'
+    },
+    'post /api/room' : {
+        controller: 'room',
+        action: 'create'
+    },
+    'get /api/rooms' : {
+        controller: 'room',
+        action: 'index'
+    },
+    'get /api/groups/manage' : {
+        controller: 'group',
+        action: 'manage'
+    },
+    'get /api/group/:slug' : {
+        controller: 'group',
+        action: 'view'
+    },
+    'post /api/group/:slug/user' : {
+        controller: 'group',
+        action: 'user_add'
+    },
+    'delete /api/group/:slug/user/:id' : {
+        controller: 'group',
+        action: 'user_delete'
+    },
+    'post /api/group' : {
+        controller: 'group',
+        action: 'create'
+    },
+    'get /api/groups' : {
+        controller: 'group',
+        action: 'index'
+    }
   /*
   // But what if you want your home page to display
   // a signup form located at `views/user/signup.ejs`?

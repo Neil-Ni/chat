@@ -15,9 +15,15 @@ module.exports.session = {
   // Session secret is automatically generated when your new app is created
   // Replace at your own risk in production-- you will invalidate the cookies of your users,
   // forcing them to log in again. 
-  secret: 'ffc3d706160155f6977445bb65adb901'
-
-
+  secret: 'ffc3d706160155f6977445bb65adb901',
+  key: 'chat.sid',
+  adapter: 'redis',
+  host: (process.env.REDISCLOUD_URL ? process.env.REDISCLOUD_URL.match(/(?:redis:\/\/\w+):(\w+)@([A-Za-z0-9_\-\.]+):(\d+)/)[2] : 'localhost'),
+  port: (process.env.REDISCLOUD_URL ? process.env.REDISCLOUD_URL.match(/(?:redis:\/\/\w+):(\w+)@([A-Za-z0-9_\-\.]+):(\d+)/)[3] : 6379),
+  // ttl: <redis session TTL in seconds>,
+  // db: 0,
+  pass: (process.env.REDISCLOUD_URL ? process.env.REDISCLOUD_URL.match(/(?:redis:\/\/\w+):(\w+)@([A-Za-z0-9_\-\.]+):(\d+)/)[1] : null),
+            
   // In production, uncomment the following lines to set up a shared redis session store
   // that can be shared across multiple Sails.js servers
   // adapter: 'redis',
