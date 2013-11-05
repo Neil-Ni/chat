@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>WaterCooler - Welcome</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="//fonts.googleapis.com/css?family=Courgette" rel="stylesheet" type="text/css">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/styles/select2.css" rel="stylesheet" type="text/css">
+<link href="/styles/application.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<nav role="navigation" class="navbar navbar-inverse navbar-static-top">
+<div class="container">
+<div class="navbar-header">
+<button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+<span class="icon-bar">
+</span>
+<span class="icon-bar">
+</span>
+<span class="icon-bar">
+</span>
+</button>
+<a href="/" class="navbar-brand">
+WaterCooler</a>
+</div>
+<div class="collapse navbar-collapse">
+</div>
+</div>
+</nav>
+<div id="container" class="container">
+<div id="alerts" class="row">
+</div>
+<div id="login-container" class="row well center">
+<form id="login-form" class="col-lg-5">
+<legend>
+Login</legend>
+<div class="form-group">
+<label>
+Username</label>
+<input type="text" id="loginName" placeholder="Username" required class="form-control">
+</div>
+<div class="form-group">
+<label>
+Password</label>
+<input type="password" id="loginPassword" placeholder="Password" required class="form-control">
+</div>
+<button id="loginButton" type="submit" class="btn btn-primary btn-block">
+Login</button>
+</form>
+<div class="col-lg-1">
+<h4 class="vertical-center">
+OR</h4>
+</div>
+<form id="signup-form" class="col-lg-6">
+<legend>
+Signup</legend>
+<div class="row">
+<div class="col-lg-6 form-group">
+<label>
+First Name</label>
+<input id="signupFirstName" type="text" value="" placeholder="First Name" required class="form-control">
+</div>
+<div class="col-lg-6 form-group">
+<label>
+Last Name</label>
+<input id="signupLastName" type="text" value="" placeholder="Last Name" required class="form-control">
+</div>
+</div>
+<div class="form-group">
+<label>
+Username</label>
+<input type="text" id="signupUsername" placeholder="Username" required class="form-control">
+</div>
+<div class="form-group">
+<label>
+Email</label>
+<input type="email" id="signupEmail" placeholder="Email" required class="form-control">
+</div>
+<div class="row">
+<div class="col-lg-6 form-group">
+<label>
+Password</label>
+<input type="password" id="signupPassword" placeholder="Password" required class="form-control">
+</div>
+<div class="col-lg-6 form-group">
+<label>
+Confirm Password</label>
+<input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required class="form-control">
+</div>
+</div>
+<button id="signupButton" type="submit" class="btn btn-primary btn-block">
+ Signup</button>
+</form>
+</div>
+</div>
+<script type="text/javascript" src="/js/socket.io.js">
+</script>
+<script type="text/javascript" src="/js/sails.io.js">
+</script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
+</script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js">
+</script>
+<script type="text/javascript" src="/js/select2.min.js">
+</script>
+<script type="text/javascript" src="/js/global.js">
+</script>
+<script>
+$("#login-form").submit(function(e){
+    var username = $("#loginName").val();
+    var password = $("#loginPassword").val();
+    console.log({ username: username, password: password });
+    if (username && password) {
+        $.post('/login',
+            { username: username, password: password },
+            function () {
+                window.location = "/dashboard";
+            }
+        ).fail(function(res){
+            $('#alerts').html('<div class="alert alert-danger">
+Could not login: '+res.responseJSON.error+'</div>
+');
+        });
+    } else {
+        $('#alerts').html('<div class="alert alert-danger">
+Username and password are required</div>
+');
+    }
+    e.preventDefault();
+});
+$("#signup-form").submit(function(e){
+    var firstName = $("#signupFirstName").val();
+    var lastName = $("#signupLastName").val();
+    var username = $("#signupUsername").val();
+    var password = $("#signupPassword").val();
+    var confirmPassword = $("#signupConfirmPassword").val();
+    var email = $("#signupEmail").val();
+    if (username && password) {
+        if (password === confirmPassword) {
+            $.post('/user',
+                { firstName: firstName, lastName: lastName, username: username, password: password, email: email },
+                function () {
+                    window.location = "/";
+                }
+            ).fail(function(res){
+                $('#alerts').html('<div class="alert alert-danger">
+'+res.responseJSON.error+'</div>
+');
+            });
+        } else {
+            $('#signupPassword').popover({
+            title: "Validation Error",
+            content: "Passwords don't match"
+        }).click();
+        }
+    } else {
+        $('#alerts').html('<div class="alert alert-danger">
+Username and password are required</div>
+');
+    }
+    e.preventDefault();
+});</script>
+</body>
+</html>

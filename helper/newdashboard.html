@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+WaterCooler - Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="//fonts.googleapis.com/css?family=Courgette" rel="stylesheet" type="text/css">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/styles/select2.css" rel="stylesheet" type="text/css">
+<link href="/styles/application.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<nav role="navigation" class="navbar navbar-inverse navbar-static-top">
+<div class="container">
+<div class="navbar-header">
+<button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+<span class="icon-bar">
+</span>
+<span class="icon-bar">
+</span>
+<span class="icon-bar">
+</span>
+</button>
+<a href="/" class="navbar-brand">
+WaterCooler</a>
+</div>
+<div class="collapse navbar-collapse">
+<ul class="nav navbar-nav pull-right">
+<li id="user-dropdown" class="dropdown">
+<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+Logged in as&nbsp;<span>
+admin</span>
+</a>
+<ul id="user-menu" role="menu" class="dropdown-menu">
+<li>
+<a href="/account">
+<span class="glyphicon glyphicon-cog glyphicon-white">
+</span>
+ Account Settings</a>
+</li>
+<li>
+<a href="/user/admin">
+<span class="glyphicon glyphicon-user glyphicon-white">
+</span>
+ Profile</a>
+</li>
+<li>
+<a href="/logout">
+<span class="glyphicon glyphicon-off glyphicon-white">
+</span>
+ Logout</a>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="nav navbar-nav">
+<li class="dropdown">
+<a id="roomsLabel" href="#" data-toggle="dropdown" class="dropdown-toggle">
+Rooms&nbsp;<b class="caret">
+</b>
+</a>
+<ul role="menu" aria-labelledby="roomsLabel" class="rooms-list dropdown-menu">
+</ul>
+</li>
+<li class="dropdown">
+<a id="groupsLabel" href="#" data-toggle="dropdown" class="dropdown-toggle">
+Groups&nbsp;<b class="caret">
+</b>
+</a>
+<ul role="menu" aria-labelledby="groupsLabel" class="groups-list dropdown-menu">
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="container center">
+<div id="alerts" class="row">
+</div>
+<div class="row">
+<aside class="col-lg-3">
+<div class="well well-sm">
+<ul class="nav nav-stacked nav-pills">
+<li>
+<a href="/dashboard">
+Dashboard</a>
+</li>
+<li>
+<a href="/account">
+Account</a>
+</li>
+<li>
+<a href="/messages">
+Messages</a>
+</li>
+</ul>
+</div>
+<div class="well well-sm">
+<h5>
+Rooms</h5>
+<ul class="rooms-list nav nav-stacked nav-pills">
+</ul>
+</div>
+<div class="well well-sm">
+<h5>
+Groups</h5>
+<ul class="groups-list nav nav-stacked nav-pills">
+</ul>
+</div>
+</aside>
+<div id="rooms" class="col-lg-9">
+<div class="well">
+<h1 class="text-center text-muted text-light">
+No rooms found!</h1>
+</div>
+</div>
+</div>
+</div>
+<footer class="container">
+<p class="text-muted text-light">
+Copyright &copy; 2013 Max Fierke &middot; Licensed under the MIT license &middot; <a href="https://github.com/maxfierke/WaterCooler/issues">
+Report a bug</a>
+</p>
+</footer>
+<script type="text/javascript" src="/js/socket.io.js">
+</script>
+<script type="text/javascript" src="/js/sails.io.js">
+</script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
+</script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js">
+</script>
+<script type="text/javascript" src="/js/select2.min.js">
+</script>
+<script type="text/javascript" src="/js/global.js">
+</script>
+<script type="text/javascript" src="/js/moment.min.js">
+</script>
+</body>
+</html>

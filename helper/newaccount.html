@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+WaterCooler - admin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="//fonts.googleapis.com/css?family=Courgette" rel="stylesheet" type="text/css">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/styles/select2.css" rel="stylesheet" type="text/css">
+<link href="/styles/application.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<nav role="navigation" class="navbar navbar-inverse navbar-static-top">
+<div class="container">
+<div class="navbar-header">
+<button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+<span class="icon-bar">
+</span>
+<span class="icon-bar">
+</span>
+<span class="icon-bar">
+</span>
+</button>
+<a href="/" class="navbar-brand">
+WaterCooler</a>
+</div>
+<div class="collapse navbar-collapse">
+<ul class="nav navbar-nav pull-right">
+<li id="user-dropdown" class="dropdown">
+<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+Logged in as&nbsp;<span>
+admin</span>
+</a>
+<ul id="user-menu" role="menu" class="dropdown-menu">
+<li>
+<a href="/account">
+<span class="glyphicon glyphicon-cog glyphicon-white">
+</span>
+ Account Settings</a>
+</li>
+<li>
+<a href="/user/admin">
+<span class="glyphicon glyphicon-user glyphicon-white">
+</span>
+ Profile</a>
+</li>
+<li>
+<a href="/logout">
+<span class="glyphicon glyphicon-off glyphicon-white">
+</span>
+ Logout</a>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="nav navbar-nav">
+<li class="dropdown">
+<a id="roomsLabel" href="#" data-toggle="dropdown" class="dropdown-toggle">
+Rooms&nbsp;<b class="caret">
+</b>
+</a>
+<ul role="menu" aria-labelledby="roomsLabel" class="rooms-list dropdown-menu">
+</ul>
+</li>
+<li class="dropdown">
+<a id="groupsLabel" href="#" data-toggle="dropdown" class="dropdown-toggle">
+Groups&nbsp;<b class="caret">
+</b>
+</a>
+<ul role="menu" aria-labelledby="groupsLabel" class="groups-list dropdown-menu">
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="container center">
+<div id="alerts" class="row">
+</div>
+<div class="row">
+<aside class="col-lg-3">
+<div class="well well-sm">
+<ul class="nav nav-stacked nav-pills">
+<li>
+<a href="/dashboard">
+Dashboard</a>
+</li>
+<li>
+<a href="/account">
+Account</a>
+</li>
+<li>
+<a href="/messages">
+Messages</a>
+</li>
+</ul>
+</div>
+<div class="well well-sm">
+<h5>
+Rooms</h5>
+<ul class="rooms-list nav nav-stacked nav-pills">
+</ul>
+</div>
+<div class="well well-sm">
+<h5>
+Groups</h5>
+<ul class="groups-list nav nav-stacked nav-pills">
+</ul>
+</div>
+</aside>
+<div class="col-lg-9">
+<div id="alerts" class="row">
+</div>
+<div id="account-container" class="row well">
+<form id="account-form" class="col-lg-6">
+<fieldset>
+<legend>
+Update Profile</legend>
+<div class="form-group">
+<label>
+First Name</label>
+<input id="firstName" type="text" value="" placeholder="First Name" required class="form-control">
+</div>
+<div class="form-group">
+<label>
+Last Name</label>
+<input id="lastName" type="text" value="" placeholder="Last Name" required class="form-control">
+</div>
+<div class="form-group">
+<label>
+Username</label>
+<div class="input-group">
+<span class="input-group-addon">
+@</span>
+<input id="username" type="text" value="admin" placeholder="Username" required class="form-control">
+</div>
+</div>
+<div class="form-group">
+<label>
+Email</label>
+<input id="email" type="email" value="changeme@change.me" placeholder="Email" required class="form-control">
+</div>
+<div class="form-group">
+<label>
+Location</label>
+<input id="location" type="text" value="" placeholder="Location" class="form-control">
+</div>
+<input type="submit" value="Update Profile" class="btn btn-primary btn-block">
+</fieldset>
+</form>
+<div class="col-lg-6">
+<div class="text-center">
+<img src="https://secure.gravatar.com/avatar/710edce5752c1bf2f673d60a8b4559ec?s=200" class="img-thumbnail">
+<br>
+<br>
+</div>
+<form id="password-form">
+<legend>
+Change Password</legend>
+<div class="form-group">
+<label>
+Password</label>
+<input id="password" type="password" value="" placeholder="Password" class="form-control">
+</div>
+<div class="form-group">
+<label>
+Confirm Password</label>
+<input id="confirmPassword" type="password" value="" placeholder="Confirm Password" class="form-control">
+</div>
+<input type="submit" value="Change Password" class="btn btn-warning btn-block">
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="container">
+<p class="text-muted text-light">
+Copyright &copy; 2013 Max Fierke &middot; Licensed under the MIT license &middot; <a href="https://github.com/maxfierke/WaterCooler/issues">
+Report a bug</a>
+</p>
+</footer>
+<script type="text/javascript" src="/js/socket.io.js">
+</script>
+<script type="text/javascript" src="/js/sails.io.js">
+</script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
+</script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js">
+</script>
+<script type="text/javascript" src="/js/select2.min.js">
+</script>
+<script type="text/javascript" src="/js/global.js">
+</script>
+<script>
+$("#account-form").submit(function(e){
+    e.preventDefault();
+    var username = $("#username").val();
+    var email = $("#email").val();
+    var location = $("#location").val();
+    var firstName = $("#firstName").val();
+    var lastName = $("#lastName").val();
+    var data = { username: username, email: email, firstName: firstName,
+                 lastName: lastName, location: location };
+    $.ajax({
+        type: 'PUT',
+        url: '/user/5276e4ca6478139308000001',
+        data: data,
+        success: function () {
+            $('#alerts').html('<div class="alert alert-success">
+Profile updated!</div>
+');
+        },
+        error: function(res) {
+            $('#alerts').html('<div class="alert alert-danger">
+Could not update profile: '+res.responseJSON.error+'</div>
+');
+        }
+    });
+});
+$('#password-form').submit(function (e) {
+    e.preventDefault();
+    var password = $("#password").val();
+    var confirmPassword = $("#confirmPassword").val();
+    if (password === confirmPassword && password.length >
+ 5) {
+        $.ajax({
+            type: 'PUT',
+            url: '/user/5276e4ca6478139308000001',
+            data: { password: password },
+            success: function () {
+                $('#alerts').html('<div class="alert alert-success">
+Password updated!</div>
+');
+            },
+            error: function(res) {
+                $('#alerts').html('<div class="alert alert-danger">
+Could not update password: '+res.responseJSON.error+'</div>
+');
+            }
+        });
+    } else if (password.length < 6) {
+        $('#alerts').html('<div class="alert alert-danger">
+Password is too short!</div>
+');
+        $('#password').popover({
+            title: "Validation Error",
+            content: "Password is too short!"
+        }).click();
+    } else {
+        $('#alerts').html('<div class="alert alert-danger">
+Passwords don\'t match</div>
+');
+        $('#password').popover({
+            title: "Validation Error",
+            content: "Passwords don't match"
+        }).click();
+    }
+});
+</script>
+</body>
+</html>
